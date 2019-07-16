@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Agenda Telefonica</title>
+    <style>
+        body{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Verdana, Tahoma;
+        }
+
+        #display-table, th, td{
+            border: 1px solid rgb(0, 153, 255);
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+    <script>
+
+        var memo = [{name: "Petre", telephone: 2106222}, {name: "Gelu", telephone: 148210210}, {name: "Alex", telephone: 43343500}];
+        var columns = "";
+        
+        function addData(){
+            event.preventDefault();
+
+            for(var i = 0; i < memo.length; i++){
+                columns += `<tr>
+                    <td>${memo[i].name}</td>
+                    <td>${memo[i].telephone}</td>
+                </tr>`;
+            }
+            document.querySelector("#display-table tbody").innerHTML = columns;
+
+            document.querySelector("#formular").reset();
+        }
+    </script>
+</head>
+<body>
+    <h1>Scoala Informala Bucuresti</h1>
+    <h2>Agenda Telefonica</h2>
+    <p id="demo"></p>
+    <form id ="formular" onsubmit="addData(this, event);">
+        <fieldset>
+            <legend><strong>Agenda Telefonica</strong></legend>
+            <label>Nume: <input type="text" name="nume"></label>
+            <label>Telefon: <input type="tel" name="telefon"></label>
+            <input type="submit" name="submit" value="Adauga!">
+        </fieldset>
+    </form>
+    <p id="demo"></p>
+    <table id="display-table">
+        <thead>
+            <tr>
+                <th>Nume</th>
+                <th>Telefon</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</body>
+</html>
