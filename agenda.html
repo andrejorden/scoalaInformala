@@ -10,58 +10,89 @@
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Verdana, Tahoma;
         }
 
-        #display-table, th, td{
-            border: 1px solid rgb(0, 153, 255);
-            border-collapse: collapse;
-            padding: 5px;
+        #formular, #formular fieldset{
+            border: none;
+            border-radius: 1em;
+            padding: 1em;
+            background: #ddd;
         }
+
+        #display-table{
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 1em;
+            overflow: hidden;
+        }
+
+        th, td{
+            padding: 1em;
+            background: #ddd;
+            border-bottom: 2px solid white;
+            text-align: left;
+        }
+        
         .hidden{
             display: none;
         }
+
+        .wrapp{
+            width: 74%;
+            margin: 0 auto;
+        }
     </style>
     <script>
-
-        var memo = [{name: "Petre", telephone: 2106222}, {name: "Gelu", telephone: 148210210}, {name: "Alex", telephone: 43343500}];
+        var memo = [];
         var columns = "";
-        
+        var empty = "";
+        var data;
         function addData(){
-            event.preventDefault();
-
-            for(var i = 0; i < memo.length; i++){
-                columns += `<tr>
+            var nume = document.querySelector("[name='nume']").value;
+            var telefon = document.querySelector("[name='telefon']").value;
+            data = {name: nume, telephone: telefon};
+            if(nume.length === empty || telefon.length < 5){
+                window.alert("Completeaza un numar de telefon valid!");
+            }else{
+                memo.push(data);
+                console.log(memo);
+                var display = "";
+                for(var i = 0; i < memo.length; i++){
+                    display += `<tr>
                     <td>${memo[i].name}</td>
                     <td>${memo[i].telephone}</td>
                 </tr>`;
+                document.querySelector("#display-table").classList.remove("hidden");
+                document.querySelector("#display-table tbody").innerHTML = display;
+                }
             }
-            document.querySelector("#display-table tbody").innerHTML = columns;
-
+            event.preventDefault();
             document.querySelector("#formular").reset();
         }
     </script>
 </head>
 <body>
-    <h1>Scoala Informala Bucuresti</h1>
-    <h2>Agenda Telefonica</h2>
-    <p id="demo"></p>
-    <form id ="formular" onsubmit="addData(this, event);">
-        <fieldset>
-            <legend><strong>Agenda Telefonica</strong></legend>
-            <label>Nume: <input type="text" name="nume"></label>
-            <label>Telefon: <input type="tel" name="telefon"></label>
-            <input type="submit" name="submit" value="Adauga!">
-        </fieldset>
-    </form>
-    <p id="demo"></p>
-    <table id="display-table">
-        <thead>
-            <tr>
-                <th>Nume</th>
-                <th>Telefon</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-        <tfoot></tfoot>
-    </table>
+    <div class="wrapp">
+        <h1>Scoala Informala Bucuresti</h1>
+        <h2>Agenda Telefonica</h2>
+        <p id="demo"></p>
+        <form id ="formular" onsubmit="addData(this, event);">
+            <fieldset>
+                <legend><strong>Agenda Telefonica</strong></legend>
+                <label>Nume: <input type="text" name="nume" required></label>
+                <label>Telefon: <input type="tel" name="telefon" pattern="[0-9]{4}[0-9]{3}[0-9]{3}" required></label>
+                <input type="submit" name="submit" value="Adauga!">
+            </fieldset>
+        </form>
+        <p id="demo"></p>
+        <table id="display-table" class="hidden">
+            <thead>
+                <tr>
+                    <th>Nume</th>
+                    <th>Telefon</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
