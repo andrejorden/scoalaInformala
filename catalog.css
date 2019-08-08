@@ -1,0 +1,30 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font: normal 18px/100% 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+div.container{
+    display: inline-table;
+    width: 40%;
+}
+
+div.container, th, td{
+    padding: 10px;
+}
+
+table, form{
+    margin-bottom: 20px;
+}
+
+table{
+    width: 100%;
+}
+
+table, th, td{
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
