@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Catalog de Note</title>
+    <link rel="stylesheet" href="css/catalog.css">
+    <script src="js/catalog.js"></script>
+</head>
+<body>
+    <h1>Scoala Informala de IT - Bucuresti</h1>
+    <h2>Catalog de Note</h2>
+    <div class="container">
+        <form action="#">
+            <fieldset>
+                <legend><strong>Adauga Elev</strong></legend>
+                <label>Nume: <input type="text" name="Nume" placeholder="Nume"></label>
+                <input type="submit" value="OK!">
+            </fieldset>
+        </form>
+        <button>Sort Up</button>
+        <button>Sort Down</button>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Nume</th>
+                    <th>Medie</th>
+                    <td colspan="2"></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gheorghe</td>
+                    <td>9</td>
+                    <td><button>Vezi Notele</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <form action="#">
+            <fieldset>
+                <legend><strong>Adauga Note</strong></legend>
+                <label>Nota: <input type="number" name="Nota" placeholder="Nota"></label>
+                <input type="submit" value="OK!">
+            </fieldset>
+        </form>
+        <button>Sort Up</button>
+        <button>Sort Down</button>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Nume</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gheorghe</td>
+                    <td>9</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
